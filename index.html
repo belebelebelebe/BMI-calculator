@@ -6,19 +6,19 @@
         margin: 0;
         padding: 0;
         background-color: #f0f0f0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh; /* Full height of the viewport */
+        display: flex; /* Enable Flexbox */
+        justify-content: center; /* Horizontally center the content */
+        align-items: center; /* Vertically center the content */
+        height: 100vh; /* Ensure the body takes the full height of the viewport */
     }
 
     form {
         max-width: 400px;
-        margin: 20px auto;
         padding: 20px;
         background-color: #fff;
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
     }
 
     label {
@@ -27,7 +27,7 @@
     }
 
     input {
-        width: 100%; /* Changed to 100% for better alignment */
+        width: 80%; /* Adjusted for better appearance */
         padding: 8px;
         margin-bottom: 10px;
         border: 1px solid #ccc;
@@ -36,7 +36,7 @@
 
     button {
         display: block;
-        width: 100%; /* Changed to 100% for better alignment */
+        width: 85%; /* Adjusted for better appearance */
         padding: 8px;
         margin-top: 10px;
         background-color: #007bff;
@@ -56,9 +56,9 @@
     }
 </style>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI Calculator</title>
 </head>
 <body>
     <form>
@@ -67,8 +67,8 @@
         <input type="number" id="weight" placeholder="Enter weight in kg">
         <label for="height">Height (cm):</label>
         <input type="number" id="height" placeholder="Enter height in cm">
-        <button id="calculateBtn">Calculate BMI</button>
-        <button id="clearBtn">Clear</button>
+        <button id="calculateBtn" type="button">Calculate BMI</button>
+        <button id="clearBtn" type="button">Clear</button>
         <p id="result"></p>
     </form>
 
@@ -80,20 +80,21 @@
             var result = (weight/(height * height)).toFixed(2)
             
             if (result < 18.5) {
-                document.getElementById('result').textContent = "your BMI is:" + result + ". you are underweight"
-            } else if (18.5< result && result< 24.9) {
-                document.getElementById('result').textContent = "your BMI is:" + result + ". you are healthy"
+                document.getElementById('result').textContent = "Your BMI is: " + result + ". You are underweight.";
+            } else if (18.5 < result && result < 24.9) {
+                document.getElementById('result').textContent = "Your BMI is: " + result + ". You are healthy.";
             } else if (result > 25 && result < 29.9) {
-                document.getElementById('result').textContent = "your BMI is:" + result + ". you are overweight"
+                document.getElementById('result').textContent = "Your BMI is: " + result + ". You are overweight.";
             } else if (result > 30) {
-                document.getElementById('result').textContent = "your BMI is:" + result + ". you are obese"
+                document.getElementById('result').textContent = "Your BMI is: " + result + ". You are obese.";
             }
-        })
-        document.getElementById('clearBtn').addEventListener('click',()=>{
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', ()=>{
             document.getElementById('weight').value = '';
             document.getElementById('height').value = '';
-        })
-        
+            document.getElementById('result').textContent = '';
+        });
     </script>
 </body>
 </html>
